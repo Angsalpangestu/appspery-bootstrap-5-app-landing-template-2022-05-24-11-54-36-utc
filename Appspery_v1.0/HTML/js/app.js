@@ -1,23 +1,21 @@
-
-
 /********************* Menu Js **********************/
 
 function windowScroll() {
   const navbar = document.getElementById("navbar");
   if (
-      document.body.scrollTop >= 50 ||
-      document.documentElement.scrollTop >= 50
+    document.body.scrollTop >= 50 ||
+    document.documentElement.scrollTop >= 50
   ) {
-      navbar.classList.add("nav-sticky");
+    navbar.classList.add("nav-sticky");
   } else {
-      navbar.classList.remove("nav-sticky");
+    navbar.classList.remove("nav-sticky");
   }
 }
 
-window.addEventListener('scroll', (ev) => {
+window.addEventListener("scroll", (ev) => {
   ev.preventDefault();
   windowScroll();
-})
+});
 
 //
 /********************* light-dark js ************************/
@@ -89,20 +87,20 @@ var swiper = new Swiper(".homeSwiper", {
   breakpoints: {
     1920: {
       slidesPerView: 2,
-      spaceBetween: 50
+      spaceBetween: 50,
     },
-  }
+  },
 });
 
 // ********* swiper slider ** app Slider **
 
-new Swiper('.swiper-container1', {
+new Swiper(".swiper-container1", {
   loop: true,
   slidesPerView: 3,
   paginationClickable: true,
   spaceBetween: 20,
-  pagination: '.swiper-pagination',
-  slidesPerView: 'auto',
+  pagination: ".swiper-pagination",
+  slidesPerView: "auto",
   paginationClickable: true,
   centeredSlides: true,
   speed: 5000,
@@ -110,7 +108,7 @@ new Swiper('.swiper-container1', {
   breakpoints: {
     1920: {
       slidesPerView: 5,
-      spaceBetween: 50
+      spaceBetween: 50,
     },
     992: {
       slidesPerView: 5,
@@ -123,8 +121,8 @@ new Swiper('.swiper-container1', {
     576: {
       slidesPerView: 3,
       spaceBetween: 30,
-    }
-  }
+    },
+  },
 });
 
 // Contact Form
@@ -134,41 +132,54 @@ function validateForm() {
   var subject = document.forms["myForm"]["subject"].value;
   var comments = document.forms["myForm"]["comments"].value;
   document.getElementById("error-msg").style.opacity = 0;
-  document.getElementById('error-msg').innerHTML = "";
+  document.getElementById("error-msg").innerHTML = "";
   if (name == "" || name == null) {
-      document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning'>*Please enter a Name*</div>";
-      fadeIn();
-      return false;
+    document.getElementById("error-msg").innerHTML =
+      "<div class='alert alert-warning'>*Please enter a Name*</div>";
+    fadeIn();
+    return false;
   }
   if (email == "" || email == null) {
-      document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning'>*Please enter a Email*</div>";
-      fadeIn();
-      return false;
+    document.getElementById("error-msg").innerHTML =
+      "<div class='alert alert-warning'>*Please enter a Email*</div>";
+    fadeIn();
+    return false;
   }
   if (subject == "" || subject == null) {
-      document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning'>*Please enter a Subject*</div>";
-      fadeIn();
-      return false;
+    document.getElementById("error-msg").innerHTML =
+      "<div class='alert alert-warning'>*Please enter a Subject*</div>";
+    fadeIn();
+    return false;
   }
   if (comments == "" || comments == null) {
-      document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning'>*Please enter a Comments*</div>";
-      fadeIn();
-      return false;
+    document.getElementById("error-msg").innerHTML =
+      "<div class='alert alert-warning'>*Please enter a Comments*</div>";
+    fadeIn();
+    return false;
   }
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("simple-msg").innerHTML = this.responseText;
-          document.forms["myForm"]["name"].value = "";
-          document.forms["myForm"]["email"].value = "";
-          document.forms["myForm"]["subject"].value = "";
-          document.forms["myForm"]["comments"].value = "";
-      }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("simple-msg").innerHTML = this.responseText;
+      document.forms["myForm"]["name"].value = "";
+      document.forms["myForm"]["email"].value = "";
+      document.forms["myForm"]["subject"].value = "";
+      document.forms["myForm"]["comments"].value = "";
+    }
   };
   xhttp.open("POST", "php/contact.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&comments=" + comments);
+  xhttp.send(
+    "name=" +
+      name +
+      "&email=" +
+      email +
+      "&subject=" +
+      subject +
+      "&comments=" +
+      comments
+  );
   return false;
 }
 
@@ -176,15 +187,14 @@ function fadeIn() {
   var fade = document.getElementById("error-msg");
   var opacity = 0;
   var intervalID = setInterval(function () {
-      if (opacity < 1) {
-          opacity = opacity + 0.5
-          fade.style.opacity = opacity;
-      } else {
-          clearInterval(intervalID);
-      }
+    if (opacity < 1) {
+      opacity = opacity + 0.5;
+      fade.style.opacity = opacity;
+    } else {
+      clearInterval(intervalID);
+    }
   }, 200);
 }
-
 
 // home1
 
@@ -198,13 +208,13 @@ var swiper = new Swiper(".mySwiper1", {
     el: ".swiper-pagination",
     clickable: true,
   },
-  slidesPerView: 'auto',
+  slidesPerView: "auto",
   autoplay: {
     delay: 4000,
-  }
+  },
 });
 
-//  home-2 
+//  home-2
 
 var swiper = new Swiper(".mySwiper2", {
   effect: "coverflow",
@@ -223,13 +233,13 @@ var swiper = new Swiper(".mySwiper2", {
   },
 });
 
-// Animaten js 
+// Animaten js
 
 AOS.init();
 
-// 
+//
 // Typed Text animation (animation)
-// 
+//
 
 try {
   var TxtType = function (el, toRotate, period) {
@@ -237,7 +247,7 @@ try {
     this.el = el;
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
+    this.txt = "";
     this.tick();
     this.isDeleting = false;
   };
@@ -249,14 +259,16 @@ try {
     } else {
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+    this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
     var that = this;
     var delta = 200 - Math.random() * 100;
-    if (this.isDeleting) { delta /= 2; }
+    if (this.isDeleting) {
+      delta /= 2;
+    }
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
       this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
+    } else if (this.isDeleting && this.txt === "") {
       this.isDeleting = false;
       this.loopNum++;
       delta = 500;
@@ -266,14 +278,12 @@ try {
     }, delta);
   };
   function typewrite() {
-    if (toRotate === 'undefined') {
+    if (toRotate === "undefined") {
       changeText();
-    }
-    else
-      var elements = document.getElementsByClassName('typewrite');
+    } else var elements = document.getElementsByClassName("typewrite");
     for (var i = 0; i < elements.length; i++) {
-      var toRotate = elements[i].getAttribute('data-type');
-      var period = elements[i].getAttribute('data-period');
+      var toRotate = elements[i].getAttribute("data-type");
+      var period = elements[i].getAttribute("data-period");
       if (toRotate) {
         new TxtType(elements[i], JSON.parse(toRotate), period);
       }
@@ -281,9 +291,11 @@ try {
     // INJECT CSS
     var css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid transparent}";
+    css.innerHTML =
+      ".typewrite > .wrap { border-right: 0.08em solid transparent}";
     document.body.appendChild(css);
-  };
+  }
   window.onload(typewrite());
-} catch (err) {
-}
+} catch (err) {}
+
+// funnction show password
